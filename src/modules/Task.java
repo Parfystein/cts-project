@@ -5,11 +5,20 @@ public class Task {
     private String description;
     private static int idCounter = 0;
     private int idTicket;
+    private boolean taskVisible = true;
+    public enum Priority{
+        LOW,
+        MEDIUM,
+        HIGH
+    }
+    private Priority taskPriority;
 
-    public Task(String title, String description) {
+
+    public Task(String title, String description, Priority taskPriority) {
         this.title = title;
         this.description = description;
         this.idTicket = ++idCounter;
+        this.taskPriority = taskPriority;
     }
 
     public String getTitle() {
@@ -32,4 +41,19 @@ public class Task {
         return idTicket;
     }
 
+    public boolean isTaskVisible() {
+        return taskVisible;
+    }
+
+    public void setTaskVisible(boolean taskVisible) {
+        this.taskVisible = taskVisible;
+    }
+
+    public Priority getTaskPriority() {
+        return taskPriority;
+    }
+
+    public void setTaskPriority(Priority taskPriority) {
+        this.taskPriority = taskPriority;
+    }
 }
