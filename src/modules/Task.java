@@ -1,10 +1,10 @@
 package modules;
 
 public class Task {
-    private String title;
-    private String description;
+    private String taskTitle;
+    private String taskDescription;
     private static int idCounter = 0;
-    private int idTicket;
+    private int idTask;
     private boolean taskVisible = true;
     public enum Priority{
         LOW,
@@ -12,41 +12,47 @@ public class Task {
         HIGH
     }
     private Priority taskPriority;
+    private User assignedUser;
 
 
-    public Task(String title, String description, Priority taskPriority) {
-        this.title = title;
-        this.description = description;
-        this.idTicket = ++idCounter;
+    public Task(String title, String description, Priority taskPriority, User assignedUser) {
+        this.taskTitle = title;
+        this.taskDescription = description;
+        this.idTask = ++idCounter;
         this.taskPriority = taskPriority;
+        this.assignedUser = assignedUser;
     }
 
     public String getTitle() {
-        return title;
+        return taskTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.taskTitle = title;
     }
 
     public String getDescription() {
-        return description;
+        return taskDescription;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.taskDescription = description;
     }
 
     public int getId() {
-        return idTicket;
+        return idTask;
     }
 
     public boolean isTaskVisible() {
         return taskVisible;
     }
 
-    public void setTaskVisible(boolean taskVisible) {
-        this.taskVisible = taskVisible;
+    public void hide(){
+        this.taskVisible = false;
+    }
+
+    public void show(){
+        this.taskVisible = true;
     }
 
     public Priority getTaskPriority() {
@@ -55,5 +61,9 @@ public class Task {
 
     public void setTaskPriority(Priority taskPriority) {
         this.taskPriority = taskPriority;
+    }
+
+    public User getAssignedUser() {
+        return assignedUser;
     }
 }
