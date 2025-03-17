@@ -1,5 +1,4 @@
 package modules;
-import java.util.List;
 
 public class UserRegular extends User{
 
@@ -9,6 +8,13 @@ public class UserRegular extends User{
 
     @Override
     public void viewTasks(TaskManager taskManager) {
-
+        taskManager.viewTasks(false);
     }
+
+
+    @Override
+    public void filterTasksByPriority(TaskManager taskManager, Task.Priority priority) {
+        taskManager.filterTasksByPriority(priority, false);
+    }
+
 }

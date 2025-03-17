@@ -66,4 +66,5 @@ public class Task {
     public User getAssignedUser() {
         return assignedUser;
     }
+
 }

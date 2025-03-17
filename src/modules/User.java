@@ -39,4 +39,7 @@ public abstract class User {
     }
 
     public abstract void viewTasks(TaskManager taskManager);
+
+    public abstract void filterTasksByPriority(TaskManager taskManager, Task.Priority priority);
+
 }
