@@ -45,7 +45,7 @@ public class Main
 
         System.out.println("Menu: ");
         System.out.println("1 - Use admin account");
-        System.out.println("2 - Use user account");
+        System.out.println("2 - Use regular user account");
         System.out.println("0 - Close program");
         System.out.println("Pick an option: ");
         while(true){
