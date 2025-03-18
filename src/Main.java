@@ -35,8 +35,10 @@ public class Main
 
         tsk.addTask(task1);
         tsk.addTask(task2);
+        tsk.hideTask(2);
         tsk.addTask(task3);
         tsk.addTask(task4);
+        tsk.hideTask(4);
         tsk.addTask(task5);
 
         Scanner userInput = new Scanner(System.in);
