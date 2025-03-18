@@ -114,7 +114,7 @@ public class Main
                         break;
 
                     case 2:
-                        //TODO show all tasks here
+                        tsk.viewTasks(currentUser);
                         System.out.println("Which task would you like to modify?");
                         int taskToModify = userInput.nextInt();
                         System.out.println("Please enter the task name:");
@@ -128,21 +128,21 @@ public class Main
                         break;
 
                     case 3:
-                        //TODO show all tasks here
+                        tsk.viewTasks(currentUser);
                         System.out.println("Which task would you like to delete?");
                         int taskToDelete = userInput.nextInt();
                         tsk.deleteTask(currentUser,taskToDelete);
                         break;
 
                     case 4:
-                        //TODO show all tasks here
+                        tsk.viewTasks(currentUser);
                         System.out.println("Which task would you like to hide?");
                         int taskToHide = userInput.nextInt();
                         tsk.hideTask(taskToHide);
                         break;
 
                     case 5:
-                        //TODO show all tasks here
+                        tsk.viewTasks(currentUser);
                         System.out.println("Which task would you like to make visible?");
                         int taskToShow = userInput.nextInt();
                         tsk.showTask(taskToShow);
@@ -153,15 +153,30 @@ public class Main
                         break;
 
                     case 7:
-                        //TODO show the low priority tasks
+                        List<Task> lowPriorityTasks = tsk.filterTasksByPriority(Task.Priority.LOW, currentUser);
+                        for (Task task : lowPriorityTasks)
+                        {
+                            System.out.println(task.toString());
+                        }
+
                         break;
 
                     case 8:
-                        //TODO show the medium priority tasks
+                        List<Task> mediumPriorityTasks = tsk.filterTasksByPriority(Task.Priority.MEDIUM, currentUser);
+                        for (Task task : mediumPriorityTasks)
+                        {
+                            System.out.println(task.toString());
+                        }
+
                         break;
 
                     case 9:
-                        //TODO show the high priority tasks
+                        List<Task> highPriorityTasks = tsk.filterTasksByPriority(Task.Priority.HIGH, currentUser);
+                        for (Task task : highPriorityTasks)
+                        {
+                            System.out.println(task.toString());
+                        }
+
                         break;
 
                     case 0:
@@ -213,7 +228,7 @@ public class Main
                         break;
 
                     case 2:
-                        //TODO show all tasks here
+                        tsk.viewTasks(currentUser);
                         System.out.println("Which task would you like to modify?");
                         int taskToModify = userInput.nextInt();
                         System.out.println("Please enter the task name:");
@@ -239,11 +254,21 @@ public class Main
                         break;
 
                     case 5:
-                        //TODO show the medium priority tasks
+                        List<Task> mediumPriorityTasks = tsk.filterTasksByPriority(Task.Priority.MEDIUM, currentUser);
+                        for (Task task : mediumPriorityTasks)
+                        {
+                            System.out.println(task.toString());
+                        }
+
                         break;
 
                     case 6:
-                        //TODO show the high priority tasks
+                        List<Task> highPriorityTasks = tsk.filterTasksByPriority(Task.Priority.HIGH, currentUser);
+                        for (Task task : highPriorityTasks)
+                        {
+                            System.out.println(task.toString());
+                        }
+
                         break;
 
                     case 0:
