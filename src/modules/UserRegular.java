@@ -8,13 +8,15 @@ public class UserRegular extends User{
 
     @Override
     public void viewTasks(TaskManager taskManager) {
-        taskManager.viewTasks(false);
+        taskManager.viewTasks(this);
     }
+
 
 
     @Override
     public void filterTasksByPriority(TaskManager taskManager, Task.Priority priority) {
-        taskManager.filterTasksByPriority(priority, false);
+        taskManager.filterTasksByPriority(priority, this);
     }
+
 
 }

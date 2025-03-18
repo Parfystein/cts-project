@@ -58,15 +58,16 @@ public class TaskManager {
         }
     }
 
-    public void viewTasks(boolean isAdmin) {
+    public void viewTasks(User user) {
         if (allTasks.isEmpty()) {
             System.out.println("No tasks available.");
             return;
         }
 
-        System.out.println("All tasks:");
+        System.out.println("Tasks for " + user.getName() + ":");
+
         for (Task task : allTasks) {
-            if (isAdmin || task.isTaskVisible()) { // Admin sees all, Regular sees only visible
+            if (user instanceof UserAdmin || task.isTaskVisible()) {
                 System.out.println("ID: " + task.getId() +
                         " | Title: " + task.getTitle() +
                         " | Description: " + task.getDescription() +
@@ -91,7 +92,12 @@ public class TaskManager {
         System.out.println("Task with ID " + taskId + " not found.");
     }
 
-    public void deleteTask(int taskId) {
+    public void deleteTask(User user, int taskId) {
+        if (!(user instanceof UserAdmin)) {
+            System.out.println("Error: Only admins can delete tasks.");
+            return;
+        }
+
         Iterator<Task> iterator = allTasks.iterator();
         while (iterator.hasNext()) {
             Task task = iterator.next();
@@ -105,28 +111,11 @@ public class TaskManager {
     }
 
 
-    public List<Task> filterTasksByPriority(Task.Priority priority, boolean isAdmin) {
-        List<Task> filteredTasks = allTasks.stream()
+    public List<Task> filterTasksByPriority(Task.Priority priority, User user) {
+        return allTasks.stream()
                 .filter(task -> task.getTaskPriority() == priority)
+                .filter(task -> user instanceof UserAdmin || task.isTaskVisible())
                 .toList();
-
-        if (filteredTasks.isEmpty()) {
-            System.out.println("No tasks found with priority: " + priority);
-            return filteredTasks;
-        }
-
-        System.out.println("Tasks with priority " + priority + ":");
-        for (Task task : filteredTasks) {
-            if (isAdmin || task.isTaskVisible()) { // Admin sees all, Regular sees only visible
-                System.out.println("ID: " + task.getId() +
-                        " | Title: " + task.getTitle() +
-                        " | Description: " + task.getDescription() +
-                        " | Assigned to: " + task.getAssignedUser().getName() +
-                        " | Visible: " + (task.isTaskVisible() ? "Yes" : "No"));
-            }
-        }
-        return filteredTasks;
     }
-
 
 }

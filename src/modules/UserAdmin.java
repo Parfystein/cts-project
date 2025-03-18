@@ -8,7 +8,7 @@ public class UserAdmin extends User{
 
     @Override
     public void viewTasks(TaskManager taskManager) {
-        taskManager.viewTasks(true);
+        taskManager.viewTasks(this);
     }
 
 
@@ -17,12 +17,13 @@ public class UserAdmin extends User{
     }
 
     public void deleteTask(TaskManager taskManager, int taskId) {
-        taskManager.deleteTask(taskId);
+        taskManager.deleteTask(this, taskId);
     }
 
     @Override
     public void filterTasksByPriority(TaskManager taskManager, Task.Priority priority) {
-        taskManager.filterTasksByPriority(priority, false);
+        taskManager.filterTasksByPriority(priority, this);
     }
+
 
 }
