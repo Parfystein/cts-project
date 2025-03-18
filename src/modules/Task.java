@@ -67,4 +67,13 @@ public class Task {
         return assignedUser;
     }
 
+
+    @Override
+    public String toString() {
+        return "ID: " + idTask +
+                " | Title: " + taskTitle +
+                " | Description: " + taskDescription +
+                " | Priority: " + taskPriority +
+                " | Assigned to: " + assignedUser.getName();
+    }
 }

@@ -32,6 +32,10 @@ public class TaskManager {
         return null;
     }
 
+    public void addTask(Task task) {
+        allTasks.add(task);
+    }
+
 
     public void createTask(User assignedUser, String title, String description, Task.Priority priority) {
         Task newTask = new Task(title,description,priority,assignedUser);
@@ -63,8 +67,6 @@ public class TaskManager {
             System.out.println("No tasks available.");
             return;
         }
-
-        System.out.println("Tasks for " + user.getName() + ":");
 
         for (Task task : allTasks) {
             if (user instanceof UserAdmin || task.isTaskVisible()) {
